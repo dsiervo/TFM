@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<q:quakeml xmlns:q="http://quakeml.org/xmlns/quakeml/1.2" xmlns="http://quakeml.org/xmlns/bed/1.2">
+  <eventParameters publicID="smi:local/7d5a5e33-c10d-4def-a49e-485365e0b827">
+    <event publicID="smi:org.gfz-potsdam.de/geofon/SGC2018rfpw">
+      <preferredOriginID>smi:org.gfz-potsdam.de/geofon/Origin/20180903000115.509382.19898</preferredOriginID>
+      <preferredMagnitudeID>smi:org.gfz-potsdam.de/geofon/Origin/20180903000115.509382.19898</preferredMagnitudeID>
+      <type>other event</type>
+      <description>
+        <text>Villanueva - Santander, Colombia</text>
+        <type>region name</type>
+      </description>
+      <creationInfo>
+        <agencyID>SGC</agencyID>
+        <author>scevent@seismo1.sgc.gov.co</author>
+        <creationTime>2018-09-02T23:59:46.326320Z</creationTime>
+      </creationInfo>
+      <origin publicID="smi:org.gfz-potsdam.de/geofon/Origin/20180903000115.509382.19898">
+        <time>
+          <value>2018-09-02T23:47:47.229999Z</value>
+        </time>
+        <latitude>
+          <value>6.654333333</value>
+          <uncertainty>9.616652224</uncertainty>
+        </latitude>
+        <longitude>
+          <value>-73.13933333</value>
+          <uncertainty>9.616652224</uncertainty>
+        </longitude>
+        <depth>
+          <value>158600.0</value>
+          <uncertainty>8700.0</uncertainty>
+        </depth>
+        <methodID>smi:org.gfz-potsdam.de/geofon/Hypo71</methodID>
+        <earthModelID>smi:org.gfz-potsdam.de/geofon/RSNC</earthModelID>
+        <quality>
+          <associatedPhaseCount>7</associatedPhaseCount>
+          <usedPhaseCount>7</usedPhaseCount>
+          <usedStationCount>5</usedStationCount>
+          <depthPhaseCount>0</depthPhaseCount>
+          <standardError>0.15</standardError>
+          <azimuthalGap>240.0</azimuthalGap>
+          <groundTruthLevel>D</groundTruthLevel>
+          <minimumDistance>0.7603507932</minimumDistance>
+          <maximumDistance>1.901326895</maximumDistance>
+          <medianDistance>146.2</medianDistance>
+        </quality>
+        <evaluationMode>manual</evaluationMode>
+        <evaluationStatus>confirmed</evaluationStatus>
+        <creationInfo>
+          <agencyID>SGC</agencyID>
+          <author>Dhernandez@proc1</author>
+          <creationTime>2018-09-03T00:01:15.509842Z</creationTime>
+        </creationInfo>
+      </origin>
+      <magnitude publicID="smi:org.gfz-potsdam.de/geofon/Origin/20180903000115.509382.19898/netMag/MLr">
+        <mag>
+          <value>1.347278827</value>
+          <uncertainty>0.1066939718</uncertainty>
+        </mag>
+        <type>MLr</type>
+        <originID>smi:org.gfz-potsdam.de/geofon/Origin/20180903000115.509382.19898</originID>
+        <methodID>smi:org.gfz-potsdam.de/geofon/trimmed_mean(25)</methodID>
+        <stationCount>3</stationCount>
+        <creationInfo>
+          <agencyID>SGC</agencyID>
+          <author>scmag2@seismo1.sgc.gov.co</author>
+          <creationTime>2018-09-02T23:59:46.431894Z</creationTime>
+        </creationInfo>
+      </magnitude>
+    </event>
+  </eventParameters>
+</q:quakeml>
