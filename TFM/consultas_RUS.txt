@@ -1,0 +1,42 @@
+from Event AS EvMF left join PublicObject AS POEv ON EvMF._oid = POEv._oid left join \
+PublicObject as POOri ON EvMF.preferredOriginID=POOri.publicID left join \
+Origin ON POOri._oid=Origin._oid left join PublicObject as POMag on EvMF.preferredMagnitudeID=POMag.publicID \
+left join Magnitude ON Magnitude._oid = POMag._oid left join EventDescription \
+ON EvMF._oid=EventDescription._parent_oid \
+
+(Magnitude.magnitude_value between "+str(mag_min)+" and "+str(mag_max)+" and \
+Origin.latitude_value between "+str(lat_min)+" and "+str(lat_max)+" and \
+Origin.longitude_value between "+str(lon_min)+" and "+str(lon_max)+" and \
+Origin.depth_value between "+str(prof_min)+" and "+str(prof_max)+" and \
+Origin.latitude_uncertainty<"+str(elat_max)+" and \
+Origin.longitude_uncertainty<"+str(elon_max)+" and \
+Origin.depth_uncertainty<"+str(eprof_max)+" and \
+Origin.time_value between '"+time_i+" 00:00:00' and '"+time_f+" 23:59:59') \
+and (EvMF.type like 'earthquake' or EvMF.type is null )
+
+
+		cur.execute("Select POEv.publicID, Origin.time_value as 'Fecha', \
+		ROUND(Origin.latitude_value,6) as 'Lat', \
+		ROUND(Origin.longitude_value,6) as 'Lon', \
+		ROUND(Origin.depth_value,0) as 'Z', \
+		ROUND(Magnitude.magnitude_value,1) as 'Mag', \
+		Magnitude.type ,\
+		ROUND(Origin.quality_standardError,1) as 'RMS', \
+		CONCAT(ROUND(Origin.quality_azimuthalGap,0)) as 'GAP', \
+		quality_usedStationCount as 'NF', \
+		convert(cast(convert(EventDescription.text using latin1) as binary) using utf8) as 'UBICACION', \
+		Origin.latitude_uncertainty, \
+		Origin.longitude_uncertainty, \
+		Origin.depth_uncertainty \
+		from Event AS EvMF left join PublicObject AS POEv ON EvMF._oid = POEv._oid \
+		left join PublicObject as POOri ON EvMF.preferredOriginID=POOri.publicID \
+		left join Origin ON POOri._oid=Origin._oid left join PublicObject as POMag on EvMF.preferredMagnitudeID=POMag.publicID \
+		left join Magnitude ON Magnitude._oid = POMag._oid \
+		left join Arrival on Arrival._parent_oid=Origin._oid \
+		left join PublicObject as POOri1 on POOri1.publicID = Arrival.pickID \
+		left join Pick on Pick._oid= POOri1._oid \
+		left join EventDescription \
+		ON EvMF._oid=EventDescription._parent_oid \
+		where \
+		(Pick.phaseHint_used = 1 AND Pick.phaseHint_code = 'P' AND Pick.evaluationMode = 'manual' AND Pick.waveformID_stationCode = 'RUS' AND Origin.latitude_value between -4 and 14 AND Origin.longitude_value between -82 AND -67 ) \
+		and Origin.time_value between '2016-01-01 00:00:00' and '2016-12-31 23:59:59'")
